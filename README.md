@@ -3,8 +3,8 @@ Automated Twitter URL processing for the excellent [thread-keeper](https://githu
 
 1. Deploy the thread-keeper to your server
 2. Download an [archive of your twitter account](https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive)
-3. Validate and correct the `/twitter-2009-2022/data/tweets.js` file
-4. Extract the tweet.id and the date field from all the tweets:
+3. Change the extension `.js` => `.json` and validate and the `/twitter-2009-2022/data/tweets.js` file
+4. Extract the `tweet.id` and the `.tweet.created_at` from all the tweets:
 
 ```
   {
@@ -64,7 +64,7 @@ Automated Twitter URL processing for the excellent [thread-keeper](https://githu
     }
   },
   ```
-  5. Using JQ example below: 
+  Extract example using [JQ](https://stedolan.github.io/jq/): 
   
   `cat tweets.json | jq '.[].tweet.id' > tweetsID.json`
   
@@ -74,5 +74,11 @@ Automated Twitter URL processing for the excellent [thread-keeper](https://githu
 
 
 6. Clean up the .csv (see example and sort by date) - I split the csv into multiple sheets and pull tweets by year.
+
+7. Put the the `.csv` in the same directory as the pythin script
+
+8. Execute 
+
+9. Combine pdfs - ghostscript 
 
 
