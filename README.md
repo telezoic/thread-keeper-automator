@@ -67,15 +67,14 @@ Automated Twitter URL processing for the excellent [thread-keeper](https://githu
   Extract example using [JQ](https://stedolan.github.io/jq/): 
   
   `cat tweets.json | jq '.[].tweet.id' > tweetsID.json`
+ 
+  `cat tweets.json | jq '.[].tweet.created_at' > tweetsdates.json`
   
   and dump in a csv . . . 
-  
-  `cat tweets.json | jq '.[].tweet.created_at' > tweetsdates.json`
 
+6. Clean up the .csv (see example and sort by date) - I split the csv into multiple sheets and pulled tweets by year.
 
-6. Clean up the .csv (see example and sort by date) - I split the csv into multiple sheets and pull tweets by year.
-
-7. Put the the `.csv` in the same directory as the pythin script
+7. Put the the `.csv` in the same directory as the python script
 
 8. Execute 
 
