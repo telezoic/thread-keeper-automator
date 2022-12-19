@@ -4,7 +4,7 @@ Automated Twitter URL processing for the excellent [thread-keeper](https://githu
 1. Deploy the thread-keeper to your server
 2. Download an [archive of your twitter account](https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive)
 3. Change the extension `.js` => `.json` and validate and the `/twitter-xxxx-xxxx/data/tweets.js` file
-4. Extract the `tweet.id` and the `.tweet.created_at` from all the tweets:
+4. Extract the `tweet.id` and the `.tweet.created_at` from the file:
 
 ```
   {
