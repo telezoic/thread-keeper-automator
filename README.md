@@ -3,7 +3,7 @@ Automated Twitter URL processing for the excellent [thread-keeper](https://githu
 
 1. Deploy the thread-keeper to your server
 2. Download an [archive of your twitter account](https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive)
-3. Change the extension `.js` => `.json` and validate and the `/twitter-2009-2022/data/tweets.js` file
+3. Change the extension `.js` => `.json` and validate and the `/twitter-xxxx-xxxx/data/tweets.js` file
 4. Extract the `tweet.id` and the `.tweet.created_at` from all the tweets:
 
 ```
@@ -66,18 +66,23 @@ Automated Twitter URL processing for the excellent [thread-keeper](https://githu
   ```
   Extract example using [JQ](https://stedolan.github.io/jq/): 
   
+  
   `cat tweets.json | jq '.[].tweet.id' > tweetsID.json`
  
   `cat tweets.json | jq '.[].tweet.created_at' > tweetsdates.json`
   
   and dump in a csv . . . 
 
-6. Clean up the .csv (see example and sort by date) - I split the csv into multiple sheets and pulled tweets by year.
+6. Clean up the .csv (see `example.csv` with added columns for date sorting) - I split the csv into multiple sheets and pulled tweets by year.
 
-7. Put the the `.csv` in the same directory as the python script
+7. Put the the .csv in the same directory as the python script
 
-8. Execute 
+8. Execute the script
 
-9. Combine pdfs - ghostscript 
+`python autoThreads.py` (GIU) or `python autoHeadless.py` (Headless)
+
+9. Combine the pdfs. I used [Ghostscript](https://www.ghostscript.com/) here.
+
+`gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=COMBINEDPDFS.pdf *.pdf` 
 
 
