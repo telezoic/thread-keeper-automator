@@ -1,5 +1,5 @@
 # thread-keeper-automator
-Automated Twitter URL processing for the excellent [thread-keeper](https://github.com/harvard-lil/thread-keeper)
+Automated Twitter URL processing for the excellent [thread-keeper](https://github.com/harvard-lil/thread-keeper) from the Harvard Library Innovation Laboratory 
 
 1. Deploy the thread-keeper to your server
 2. Download an [archive of your twitter account](https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive)
