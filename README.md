@@ -85,4 +85,6 @@ Automated Twitter URL processing for the excellent [thread-keeper](https://githu
 
 `gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=COMBINEDPDFS.pdf *.pdf` 
 
+(combining files will likely break the signatures applied to each pdf) . . . this is something to be further explored. 
 
+10. Sign the new combined document (if you like). I have been using [open-pdf-sign](https://github.com/open-pdf-sign/open-pdf-sign)
