@@ -1,57 +1,66 @@
 #python 3.11.0 
 
-#with GUI
+#with broswer, Firefox
 
 import time
 import csv
-from itertools import *
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.firefox.service import Service
+from selenium.webdriver.firefox.options import Options
+from webdriver_manager.firefox import GeckoDriverManager
 
+# Set up headless Firefox
+firefox_options = Options()
+#firefox_options.add_argument("--headless")  # Run in headless mode
+
+# Initialize the Firefox driver
+driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()), options=firefox_options)
+
+# Prompt for the CSV file name and open it
 csvfile = input("Enter the name of the csv input file . . .")
-
 urls = csv.reader(open(csvfile, "r"))
 count = 1
 
+# Process each URL in the CSV
 for url in urls:
+    driver.get("YOUR SERVER URL HERE")
 
-		browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-	
+#start tab control 
+    # Check for  multiple tabs open
+    if len(driver.window_handles) > 1:
+        # Switch to tab #1
+        driver.switch_to.window(driver.window_handles[0])
+        # close extra tabs
+        for handle in driver.window_handles[1:]:
+            driver.switch_to.window(handle)
+            driver.close()
+        driver.switch_to.window(driver.window_handles[0])
+ #end tab control
 
-		browser.get("URL FOR YOUR SERVER")
+#using FF inspect => xpath here :) 
+    thread_link = driver.find_element(By.ID, "url")
+    thread_link.send_keys(url[0])
 
-		thread_link = browser.find_element(By.ID, "url")
+    reason = driver.find_element(By.ID, "why")
+    reason.send_keys(url[0])
 
-		thread_link.send_keys(url[0])
+    checkbox = driver.find_element(By.ID, "unfold-thread")
+    checkbox.click()
 
-		reason = browser.find_element(By.ID, "why")
-		reason.send_keys(url[0])
+    time.sleep(10)
 
-		checkbox = browser.find_element(By.ID, "unfold-thread")
-		checkbox.click()
+    capture_button = driver.find_element(By.XPATH, "/html/body/main/form/fieldset[3]/button")
+    capture_button.click()
 
-		time.sleep(10)
+    time.sleep(10)
 
+    final_capture_button = driver.find_element(By.XPATH, "/html/body/main/dialog/button")
+    final_capture_button.click()
 
-		capture_button = browser.find_element(By.XPATH, value="/html/body/main/form/fieldset[3]/button")
-		#using FF inspect => xpath here :) 
-		capture_button.click()
+    time.sleep(40)
 
-		time.sleep(10)
+    print(count, url[0])
+    count += 1
 
-		final_capture_button = browser.find_element(By.XPATH, value="/html/body/main/dialog/button")
-		final_capture_button.click()
-
-		time.sleep(40)
-		
-
-		browser.quit()
-
-		print(count , url[0])
-		#print(url[0])
-		#print(count)
-		count += 1
-		
 
