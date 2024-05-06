@@ -79,7 +79,7 @@ Automated Twitter URL processing for the excellent [thread-keeper](https://githu
 
 8. Execute the script
 
-`python autoThreads.py` (GIU) or `python autoHeadless.py` (Headless)
+`python ffHead.py` (GIU) or `python ffHeadless.py` (Headless)
 
 9. Combine the pdfs. I used [Ghostscript](https://www.ghostscript.com/) here.
 
